@@ -121,7 +121,7 @@
         transition: opacity 0.8s;
     }
     
-    .print-zone {
+    #print-zone {
         position: relative;
         overflow-y: auto;
         height: 600px;
@@ -192,7 +192,7 @@
         <div id="chat-box">
             <div id="info-support">
                 <div id="profil-pic-aquas">
-                    <img src="images/aquas_logo.png" alt="logo not found">
+                    <img src="https://github.com/RomainDessaint/AQUAS/blob/main/IHM/images/aquas_logo.png?raw=true" alt="logo not found">
                 </div>
                 <div class="w-space"></div>
                 <p id="aquas-name">AQUAS Support</p>
@@ -202,20 +202,14 @@
 
             <div class="h-space"></div>
 
-            <div class="print-zone">
-                <div id="userquestion-box" align="right"></div>
-
-                <div class="h-space"></div>
-
-                <div id="aquasresponse-box" align="left"></div>
-            </div>
+            <div id="print-zone"></div>
 
             <div class="h-space"></div>
 
             <div class="inputbox">
                 <input id="user-input" class="form-control" type="text" name="userInput" placeholder="Entrez votre message..." required>
                 <div class="w-space"></div>
-                <img id="send-msg" src="images/send_message.png" alt="logo not found">
+                <img id="send-msg" src="https://github.com/RomainDessaint/AQUAS/blob/main/IHM/images/send_message.png?raw=true" alt="logo not found">
             </div>
         </div>
 
@@ -243,9 +237,9 @@
 
             function getResponse() {
                 let userText = $("#user-input").val();
-                let userHtml = '<table><tbody><tr><td></td><td><p id="time-question-' + i + '" class="time"></p></td><td><div class="w-space-5"></div></td><td><div class="user-question"><p>' + userText + '</p></div></td></tr></tbody></table><div class="h-space"></div>';
+                let userHtml = '<div id="userquestion-box" align="right"><table><tbody><tr><td></td><td><p id="time-question-' + i + '" class="time"></p></td><td><div class="w-space-5"></div></td><td><div class="user-question"><p>' + userText + '</p></div></td></tr></tbody></table><div class="h-space"></div></div>';
                 $("#user-input").val("");
-                $("#userquestion-box").append(userHtml);
+                $("#print-zone").append(userHtml);
                 $("#time-question-" + i).append(actualTime());
                 i++;
                 console.log(i);
@@ -253,9 +247,9 @@
                 $.get("/get", {
                     msg: userText
                 }).done(function(data) {
-                    var botHtml = '<table><tbody><tr><td><div id="profil-pic-aquas"><img src="images/aquas_logo.png" alt="logo not found"></div></td><td><div class="w-space-5"></div></td><td><div class="aquas-response' + i + '" class="time"><p>' + data + '</p></div></td><td><div class="w-space-5"></div></td><td><p id="time-answer"></p></td></tr></tbody></table><div class="h-space"></div>';
-                    $("#aquasresponse-box").append(botHtml);
-                    $("#time-answer" + i).append(actualTime());
+                    var botHtml = '<div id="aquasresponse-box" align="left"><table><tbody><tr><td><div id="profil-pic-aquas"><img src="https://github.com/RomainDessaint/AQUAS/blob/main/IHM/images/aquas_logo.png?raw=true" alt="logo not found"></div></td><td><div class="w-space-5"></div></td><td><div class="aquas-response"><p>' + data + '</p></div></td><td><div class="w-space-5"></div></td><td><p id="time-answer' + i + '" class="time"></p></td></tr></tbody></table><div class="h-space"></div></div>';
+                    $("#print-zone").append(botHtml);
+                    $("#time-answer-" + i).append(actualTime());
                     i++;
                 });
             }
