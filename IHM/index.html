@@ -247,7 +247,7 @@
                 $.get("/get", {
                     msg: userText
                 }).done(function(data) {
-                    var botHtml = '<div id="aquasresponse-box" align="left"><table><tbody><tr><td><div id="profil-pic-aquas"><img src="https://github.com/RomainDessaint/AQUAS/blob/main/IHM/images/aquas_logo.png?raw=true" alt="logo not found"></div></td><td><div class="w-space-5"></div></td><td><div class="aquas-response"><p>' + data + '</p></div></td><td><div class="w-space-5"></div></td><td><p id="time-answer' + i + '" class="time"></p></td></tr></tbody></table><div class="h-space"></div></div>';
+                    var botHtml = '<div id="aquasresponse-box" align="left"><table><tbody><tr><td><div id="profil-pic-aquas"><img src="https://github.com/RomainDessaint/AQUAS/blob/main/IHM/images/aquas_logo.png?raw=true" alt="logo not found"></div></td><td><div class="w-space-5"></div></td><td><div class="aquas-response"><p>' + data + '</p></div></td><td><div class="w-space-5"></div></td><td><p id="time-answer-' + i + '" class="time"></p></td></tr></tbody></table><div class="h-space"></div></div>';
                     $("#print-zone").append(botHtml);
                     $("#time-answer-" + i).append(actualTime());
                     i++;
