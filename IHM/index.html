@@ -46,7 +46,7 @@
         margin-top: 5% !important;
         padding: 0;
         width: 500px;
-        height: 75vh;
+        height: 700px;
         box-shadow: 0 2px 5px 2px rgb(230, 230, 230), 0 2px 5px 0 rgb(241, 241, 241);
         border-radius: 2px;
     }
@@ -101,11 +101,16 @@ height: 50px; */
     
     #print-zone {
         position: relative;
-        overflow-y: auto;
-        height: 600px;
+        height: 525px;
         width: 95%;
         margin: 0 auto;
         padding: 0 5px;
+    }
+    
+    #scrollable-zone {
+        overflow-y: auto;
+        height: 525px;
+        padding: 10px 20px;
     }
     
     .inputbox {
@@ -202,7 +207,9 @@ height: 50px; */
 
             <div class="h-space"></div>
 
-            <div id="print-zone"></div>
+            <div id="print-zone">
+                <div id="scrollable-zone"></div>
+            </div>
 
             <div class="h-space"></div>
 
@@ -239,7 +246,7 @@ height: 50px; */
                 let userText = $("#user-input").val();
                 let userHtml = '<div id="userquestion-box" align="right"><table><tbody><tr><td></td><td><p id="time-question-' + i + '" class="time"></p></td><td><div class="w-space-5"></div></td><td><div class="user-question"><p>' + userText + '</p></div></td></tr></tbody></table><div class="h-space"></div></div>';
                 $("#user-input").val("");
-                $("#print-zone").append(userHtml);
+                $("#scrollable-zone").append(userHtml);
                 $("#time-question-" + i).append(actualTime());
                 i++;
                 console.log(i);
@@ -248,7 +255,7 @@ height: 50px; */
                     msg: userText
                 }).done(function(data) {
                     var botHtml = '<div id="aquasresponse-box" align="left"><table><tbody><tr><td><div id="profil-pic-aquas"><img src="https://github.com/RomainDessaint/AQUAS/blob/main/IHM/images/aquas_logo.png?raw=true" alt="logo not found"></div></td><td><div class="w-space-5"></div></td><td><div class="aquas-response"><p>' + data + '</p></div></td><td><div class="w-space-5"></div></td><td><p id="time-answer-' + i + '" class="time"></p></td></tr></tbody></table><div class="h-space"></div></div>';
-                    $("#print-zone").append(botHtml);
+                    $("#scrollable-zone").append(botHtml);
                     $("#time-answer-" + i).append(actualTime());
                     i++;
                 });
